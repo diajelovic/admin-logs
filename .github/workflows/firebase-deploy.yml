@@ -28,7 +28,11 @@ jobs:
       - name: install firebase
         run: npm i -g firebase-tools
 
+      - name: Get last commit message
+        id: git_message
+        uses: ./.github/actions/github-commit-message
+
       - name: Deploy
-        run: firebase deploy --token $TOKEN
+        run: firebase deploy --token $TOKEN -m "${{ steps.git_message.outputs.last_commit_message }}"
         env:
           TOKEN: ${{ secrets.FIREBASE_TOKEN }}

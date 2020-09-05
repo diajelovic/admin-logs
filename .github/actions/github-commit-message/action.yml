@@ -1,0 +1,8 @@
+name: 'Git Message'
+description: 'Get Last git message'
+outputs:
+  last_commit_message: # id of output
+    description: 'last git commit message'
+runs:
+  using: 'node12'
+  main: 'index.js'
