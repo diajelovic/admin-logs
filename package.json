@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "compile-action": "ncc build ./.github/actions/github-commit-message/src/github-commit-message.js -o ./.github/actions/github-commit-message"
+  },
+  "devDependencies": {
+    "@actions/core": "^1.2.5",
+    "@actions/github": "^4.0.0",
+    "@vercel/ncc": "^0.24.0"
+  }
+}
