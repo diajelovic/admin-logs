@@ -1,0 +1,12 @@
+name: 'Telegram bot message'
+description: 'Get Last git message'
+inputs:
+  message:
+    required: true
+    description: message that bot will send
+  token:
+    required: true
+    description: bot token
+runs:
+  using: 'node12'
+  main: 'index.js'

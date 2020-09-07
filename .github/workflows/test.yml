@@ -1,12 +1,12 @@
 # This is a basic workflow to help you get started with Actions
 
-name: FirebaseDeploy
+name: Test Github Action
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
 on:
   push:
-    branches: [ master ]
+    branches: [ custom-aciton ]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -20,22 +20,9 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      - name: Set node Version
-        uses: actions/setup-node@v1
-        with:
-          node-version: 12.x
-
-      - name: install firebase
-        run: npm i -g firebase-tools
-
       - name: Get last commit message
         id: git_message
         uses: ./.github/actions/github-commit-message
-
-      - name: Deploy
-        run: firebase deploy --token $TOKEN -m "${{ steps.git_message.outputs.last_commit_message }}"
-        env:
-          TOKEN: ${{ secrets.FIREBASE_TOKEN }}
 
       - name: Bot send message
         uses: ./.github/actions/tg-bot-message

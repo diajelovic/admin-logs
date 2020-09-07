@@ -1,10 +1,25 @@
 {
+  "license": "MIT",
   "scripts": {
-    "compile-action": "ncc build ./.github/actions/github-commit-message/src/github-commit-message.js -o ./.github/actions/github-commit-message"
+    "compile-actions": "yarn compile-action:git-message && yarn compile-action:tg-bot",
+    "compile-action:git-message": "ncc build ./.github/actions/github-commit-message/src/github-commit-message.js -o ./.github/actions/github-commit-message",
+    "compile-action:tg-bot": "ncc build ./.github/actions/tg-bot-message/src/tg-bot-message.js -o ./.github/actions/tg-bot-message"
   },
   "devDependencies": {
     "@actions/core": "^1.2.5",
     "@actions/github": "^4.0.0",
-    "@vercel/ncc": "^0.24.0"
+    "@vercel/ncc": "^0.24.0",
+    "husky": "^4.3.0",
+    "lint-staged": "^10.3.0",
+    "prettier": "^2.1.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "dependencies": {
+    "@types/node-fetch": "^2.5.7",
+    "node-fetch": "^2.6.1"
   }
 }
