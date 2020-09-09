@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "esModuleInterop": true,
+    "noImplicitAny": true,
+    "jsx": "react"
+  },
+  "files": ["src/app/app.tsx"]
+}
