@@ -9,6 +9,7 @@ module.exports = {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'build'),
   },
+  devtool: 'eval-cheap-module-source-map',
   module: {
     rules: [
       {
@@ -17,7 +18,7 @@ module.exports = {
         use: { loader: 'babel-loader' },
       },
       {
-        test: /\.module\.css$/i,
+        test: (filepath) => filepath.endsWith('.module.css'),
         exclude: /node_modules/,
         use: [
           MiniCssExtractPlugin.loader,
@@ -30,6 +31,11 @@ module.exports = {
         ],
       },
       {
+        test: (filepath) => filepath.endsWith('.css') && !filepath.endsWith('.module.css'),
+        exclude: /node_modules/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
+      },
+      {
         test: /\.(jpg|jpeg|woff|woff2)$/,
         use: { loader: 'file-loader', options: { name: 'assets/[name].[ext]' } },
       },
@@ -38,6 +44,14 @@ module.exports = {
 
   resolve: {
     extensions: ['.js', '.ts', '.tsx', '.css'],
+    modules: [path.resolve(__dirname, 'src/app'), 'node_modules'],
+    // alias: {
+    //   pages: path.resolve(__dirname, 'src/app/pages'),
+    //   routes: path.resolve(__dirname, 'src/app/routes'),
+    //   containers: path.resolve(__dirname, 'src/app/containers'),
+    //   components: path.resolve(__dirname, 'src/app/components'),
+    //   store: path.resolve(__dirname, 'src/app/store'),
+    // },
   },
 
   plugins: [
