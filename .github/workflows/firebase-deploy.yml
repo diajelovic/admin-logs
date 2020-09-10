@@ -31,6 +31,12 @@ jobs:
       - name: install modules
         run: yarn
 
+      - name: Bot send message
+          uses: ./.github/actions/tg-bot-message
+          with:
+            message: Deploy started.
+            token: ${{ secrets.TELEGRAM_TOKEN }}
+
       - name: build
         run: yarn build
 
@@ -46,5 +52,5 @@ jobs:
       - name: Bot send message
         uses: ./.github/actions/tg-bot-message
         with:
-          message: ${{ format('Deployed! "{0}"', steps.git_message.outputs.last_commit_message) }}
+          message: ${{ format('Deployed! "{0}" view at {1}', steps.git_message.outputs.last_commit_message, 'https://admin-logs-3ffc8.web.app/') }}
           token: ${{ secrets.TELEGRAM_TOKEN }}

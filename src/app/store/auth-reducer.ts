@@ -1,7 +1,8 @@
 import { Action } from './store.types';
+import * as firebase from 'firebase';
 
 export interface AuthState {
-  profile: any;
+  profile: firebase.User;
 }
 
 const defaultState: AuthState = {

@@ -1,0 +1,17 @@
+.form {
+    border: 1px solid #000;
+    border-radius: 20px;
+    margin: 20px auto;
+    width: 400px;
+    padding: 0 20px 20px;
+}
+
+.buttonsWrapper {
+    margin: 10px 0 0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.buttonsWrapper > * {
+    margin-left: 10px;
+}
