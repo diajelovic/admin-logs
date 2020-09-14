@@ -20,7 +20,7 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 const App = () => {
-  const store = React.useReducer(rootReducer, { auth: { profile: null } });
+  const store = React.useReducer(rootReducer, { auth: {} });
 
   return (
     <storeContext.Provider value={store}>

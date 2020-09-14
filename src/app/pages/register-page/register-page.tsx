@@ -1,9 +1,15 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
-import { Link } from 'react-router-dom';
 
-export const RegisterPage = () => {
+import { NotAuthorized } from 'hocs/not-authorized';
+import { Form } from 'components/form';
+import { Button } from 'components/button';
+import { Input } from 'components/input';
+
+export const RegisterPage = NotAuthorized(() => {
+  const [errors, setErrors] = React.useState([]);
   const loginRef = React.useRef<HTMLInputElement>(null);
   const passwordRef = React.useRef<HTMLInputElement>(null);
   const confirmPasswordRef = React.useRef<HTMLInputElement>(null);
@@ -14,41 +20,39 @@ export const RegisterPage = () => {
     const confirmPassword = passwordRef.current.value;
 
     if (password !== confirmPassword) {
+      setErrors(['password dont match']);
+    } else {
+      firebase
+        .auth()
+        .createUserWithEmailAndPassword(email, password)
+        .catch(function (error) {
+          firebase
+            .auth()
+            .createUserWithEmailAndPassword(email, password)
+            .catch(function (error) {
+              setErrors([error.message]);
+            });
+        });
     }
-
-    firebase
-      .auth()
-      .createUserWithEmailAndPassword(email, password)
-      .catch(function (error) {
-        console.debug('---error', error);
-      });
   }, []);
 
+  const buttons = (
+    <Button type="submit" color="primary">
+      Register
+    </Button>
+  );
+
   return (
-    <form onSubmit={register}>
-      <input
-        ref={loginRef}
-        type="email"
-        autoComplete="username"
-        name="admin_logs_login"
-        placeholder="username or email"
-      />
-      <input
-        ref={passwordRef}
-        type="password"
-        autoComplete="new-password"
-        name="admin_logs_password"
-        placeholder="password"
-      />
-      <input
+    <Form title="Register" buttons={buttons} onSubmit={register} errors={errors}>
+      <Input ref={loginRef} type="email" autoComplete="username" placeholder="username or email" />
+      <Input ref={passwordRef} type="password" autoComplete="new-password" placeholder="password" />
+      <Input
         ref={confirmPasswordRef}
         type="password"
         autoComplete="new-password"
-        name="admin_logs_confirm_password"
         placeholder="confirm password"
       />
-      <button type="submit">Register</button>
       <Link to="/sign-in">SignIn</Link>
-    </form>
+    </Form>
   );
-};
+});

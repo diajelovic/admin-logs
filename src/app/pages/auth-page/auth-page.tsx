@@ -6,36 +6,34 @@ import { Link } from 'react-router-dom';
 import { Form } from 'components/form';
 import { Input } from 'components/input';
 import { Button } from 'components/button';
+import { NotAuthorized } from 'hocs/not-authorized';
 
-export const AuthPage = () => {
+export const AuthPage = NotAuthorized(() => {
   const loginRef = React.useRef<HTMLInputElement>(null);
   const passwordRef = React.useRef<HTMLInputElement>(null);
+  const [errors, setErrors] = React.useState([]);
   const signIn = React.useCallback((e: React.FormEvent) => {
     e.preventDefault();
     const email = loginRef.current.value;
     const password = passwordRef.current.value;
+    setErrors([]);
 
     firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
       .catch(function (error) {
-        console.debug('---error', error);
+        setErrors([error.message]);
       });
   }, []);
 
   const buttons = (
-    <>
-      <Link component={Button} to="/register">
-        Register
-      </Link>
-      <Button type="submit" color="primary">
-        SignIn
-      </Button>
-    </>
+    <Button type="submit" color="primary">
+      SignIn
+    </Button>
   );
 
   return (
-    <Form title="Sign In" onSubmit={signIn} buttons={buttons}>
+    <Form title="Sign In" onSubmit={signIn} buttons={buttons} errors={errors}>
       <Input
         ref={loginRef}
         type="email"
@@ -50,7 +48,7 @@ export const AuthPage = () => {
         autoComplete="current-password"
         placeholder="password"
       />
-      <Link to="/">Forget Password?</Link>
+      <Link to="/recovery">Forget Password?</Link> <Link to="/register">Register</Link>
     </Form>
   );
-};
+});
