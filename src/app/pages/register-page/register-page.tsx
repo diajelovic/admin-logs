@@ -7,6 +7,7 @@ import { NotAuthorized } from 'hocs/not-authorized';
 import { Form } from 'components/form';
 import { Button } from 'components/button';
 import { Input } from 'components/input';
+import { Messages } from 'components/messages';
 
 export const RegisterPage = NotAuthorized(() => {
   const [errors, setErrors] = React.useState([]);
@@ -44,7 +45,8 @@ export const RegisterPage = NotAuthorized(() => {
   );
 
   return (
-    <Form title="Register" buttons={buttons} onSubmit={register} errors={errors}>
+    <Form title="Register" buttons={buttons} onSubmit={register}>
+      <Messages errors={errors} />
       <Input ref={loginRef} type="email" autoComplete="username" placeholder="username or email" />
       <Input ref={passwordRef} type="password" autoComplete="new-password" placeholder="password" />
       <Input

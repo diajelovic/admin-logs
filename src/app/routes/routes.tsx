@@ -5,6 +5,7 @@ import { ProfilePage } from 'pages/profile-page';
 import { AuthPage } from 'pages/auth-page';
 import { RegisterPage } from 'pages/register-page';
 import { RecoveryPage } from 'pages/recovery-page';
+import { ProjectsPage } from 'pages/projects-page';
 
 export const routes: RouteConfig[] = [
   {
@@ -12,6 +13,11 @@ export const routes: RouteConfig[] = [
     routes: [
       {
         path: '/',
+        exact: true,
+        component: ProjectsPage,
+      },
+      {
+        path: '/profile',
         exact: true,
         component: ProfilePage,
       },

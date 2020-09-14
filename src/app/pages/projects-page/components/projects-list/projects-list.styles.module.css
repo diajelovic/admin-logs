@@ -1,0 +1,8 @@
+.dialog {
+    width: 300px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: flex-end;
+}

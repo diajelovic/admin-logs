@@ -7,6 +7,7 @@ import { Form } from 'components/form';
 import { Input } from 'components/input';
 import { Button } from 'components/button';
 import { NotAuthorized } from 'hocs/not-authorized';
+import { Messages } from 'components/messages';
 
 export const AuthPage = NotAuthorized(() => {
   const loginRef = React.useRef<HTMLInputElement>(null);
@@ -33,7 +34,8 @@ export const AuthPage = NotAuthorized(() => {
   );
 
   return (
-    <Form title="Sign In" onSubmit={signIn} buttons={buttons} errors={errors}>
+    <Form title="Sign In" onSubmit={signIn} buttons={buttons}>
+      <Messages errors={errors} />
       <Input
         ref={loginRef}
         type="email"

@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link, useRouteMatch } from 'react-router-dom';
+import * as firebase from 'firebase/app';
+import 'firebase/auth';
 
 import { useSelector, Store, useDispatch } from 'store';
 
-import * as styles from './styles.module.css';
-import * as firebase from 'firebase/app';
-import 'firebase/auth';
+import * as styles from './header.styles.module.css';
 
 export const Header = () => {
   const isMainPage = !!useRouteMatch({
