@@ -7,6 +7,7 @@ import { NotAuthorized } from 'hocs/not-authorized';
 import { Form } from 'components/form';
 import { Button } from 'components/button';
 import { Input } from 'components/input';
+import { Messages } from 'components/messages';
 
 export const RecoveryPage = NotAuthorized(() => {
   const [errors, setErrors] = React.useState([]);
@@ -37,13 +38,8 @@ export const RecoveryPage = NotAuthorized(() => {
   );
 
   return (
-    <Form
-      title="Register"
-      buttons={buttons}
-      onSubmit={sendMail}
-      errors={errors}
-      messages={messages}
-    >
+    <Form title="Register" buttons={buttons} onSubmit={sendMail}>
+      <Messages errors={errors} messages={messages} />
       <Input ref={loginRef} type="email" autoComplete="username" placeholder="username or email" />
       <Link to="/sign-in">SignIn</Link>
     </Form>

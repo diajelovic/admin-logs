@@ -1,0 +1,16 @@
+.messagesWrapper {
+    margin: 20px 0;
+    padding: 6px 16px 6px 30px;
+    border-radius: 5px;
+    color: rgb(183, 223, 185);
+    background: rgb(7, 17, 7);
+}
+
+.messagesWrapper.errors {
+    color: rgb(250, 179, 174);
+    background: rgb(24, 6, 5);
+}
+
+.messagesWrapper li {
+    margin: 10px 0;
+}

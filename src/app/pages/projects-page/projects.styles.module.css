@@ -1,0 +1,9 @@
+.projects {
+    flex: 0 1 250px;
+    padding: 20px;
+    box-shadow: 1px 0 2px #000;
+}
+
+.logs {
+    padding: 20px;
+}

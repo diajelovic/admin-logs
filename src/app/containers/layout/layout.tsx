@@ -6,7 +6,7 @@ import 'firebase/auth';
 import { useDispatch } from 'store';
 import { Header } from 'components/header';
 
-import './styles.css';
+import * as styles from './layout.styles.module.css';
 
 interface Props {
   route?: RouteConfig;
@@ -22,9 +22,9 @@ export const Layout = ({ route }: Props) => {
   }, []);
 
   return (
-    <>
+    <div className={styles.layout}>
       <Header />
-      {renderRoutes(route.routes)}
-    </>
+      <div className={styles.content}>{renderRoutes(route.routes)}</div>
+    </div>
   );
 };

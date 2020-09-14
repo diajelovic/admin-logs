@@ -10,6 +10,10 @@
     background: #e0e0e0;
 }
 
+.button.wide {
+    width: 100%;
+}
+
 .button:hover {
     background: #d5d5d5;
 }

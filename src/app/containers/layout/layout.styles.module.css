@@ -1,0 +1,16 @@
+html, body {
+    margin: 0;
+    font-family: Tahoma, sans-serif;
+    height: 100%;
+}
+
+.layout {
+    height: 100%;
+    display: grid;
+    grid-template-rows: auto 1fr;
+}
+
+.content {
+    display: flex;
+    align-items: stretch;
+}
