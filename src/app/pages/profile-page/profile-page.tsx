@@ -1,12 +1,10 @@
 import * as React from 'react';
-import * as firebase from 'firebase/app';
 import 'firebase/auth';
-import { Redirect } from 'react-router';
-import { useSelector, useDispatch } from 'store';
+import { useSelector } from 'store';
+import { Authorized } from 'hocs/authorized';
 
-export const ProfilePage = () => {
-  const [pending, setPending] = React.useState(true);
+export const ProfilePage = Authorized(() => {
   const isLoggedIn = useSelector((state) => !!state.auth.profile);
 
-  return pending || isLoggedIn ? <div>logged in</div> : <Redirect to="/sign-in" />;
-};
+  return isLoggedIn ? <div>logged in</div> : <div>not Logged In</div>;
+});

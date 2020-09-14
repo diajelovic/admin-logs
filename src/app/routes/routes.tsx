@@ -4,6 +4,7 @@ import { Layout } from 'containers/layout';
 import { ProfilePage } from 'pages/profile-page';
 import { AuthPage } from 'pages/auth-page';
 import { RegisterPage } from 'pages/register-page';
+import { RecoveryPage } from 'pages/recovery-page';
 
 export const routes: RouteConfig[] = [
   {
@@ -21,6 +22,10 @@ export const routes: RouteConfig[] = [
       {
         path: '/register',
         component: RegisterPage,
+      },
+      {
+        path: '/recovery',
+        component: RecoveryPage,
       },
     ],
   },
