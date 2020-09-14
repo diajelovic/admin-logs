@@ -18,6 +18,7 @@ export const RegisterPage = NotAuthorized(() => {
     const email = loginRef.current.value;
     const password = passwordRef.current.value;
     const confirmPassword = passwordRef.current.value;
+    setErrors([]);
 
     if (password !== confirmPassword) {
       setErrors(['password dont match']);

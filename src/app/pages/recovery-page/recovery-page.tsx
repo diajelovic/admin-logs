@@ -8,13 +8,26 @@ import { Form } from 'components/form';
 import { Button } from 'components/button';
 import { Input } from 'components/input';
 
-const errors: string[] = [];
-
 export const RecoveryPage = NotAuthorized(() => {
+  const [errors, setErrors] = React.useState([]);
+  const [messages, setMessages] = React.useState([]);
   const loginRef = React.useRef<HTMLInputElement>(null);
   const sendMail = React.useCallback((e: React.FormEvent) => {
     e.preventDefault();
     const email = loginRef.current.value;
+
+    setMessages([]);
+    setErrors([]);
+
+    firebase
+      .auth()
+      .sendPasswordResetEmail(email)
+      .then(() => {
+        setMessages(['email was send']);
+      })
+      .catch((error) => {
+        setErrors([error.message]);
+      });
   }, []);
 
   const buttons = (
@@ -24,7 +37,13 @@ export const RecoveryPage = NotAuthorized(() => {
   );
 
   return (
-    <Form title="Register" buttons={buttons} onSubmit={sendMail} errors={errors}>
+    <Form
+      title="Register"
+      buttons={buttons}
+      onSubmit={sendMail}
+      errors={errors}
+      messages={messages}
+    >
       <Input ref={loginRef} type="email" autoComplete="username" placeholder="username or email" />
       <Link to="/sign-in">SignIn</Link>
     </Form>
