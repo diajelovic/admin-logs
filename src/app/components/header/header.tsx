@@ -6,6 +6,7 @@ import 'firebase/auth';
 import { useSelector, Store, useDispatch } from 'store';
 
 import * as styles from './header.styles.module.css';
+import { Button } from 'components/button';
 
 export const Header = () => {
   const isMainPage = !!useRouteMatch({
@@ -38,7 +39,7 @@ export const Header = () => {
       {profile ? (
         <>
           <div>Welcome, {profile.displayName || profile.email}</div>
-          <button onClick={signOut}>SignOut</button>
+          <Button onClick={signOut}>SignOut</Button>
         </>
       ) : (
         !isSignInPage && <Link to="/sign-in">SignIn</Link>

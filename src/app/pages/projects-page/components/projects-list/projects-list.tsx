@@ -14,12 +14,13 @@ import { ProjectItem } from './project-item';
 import * as styles from './projects-list.styles.module.css';
 
 export const ProjectsList = () => {
-  const [showPopup, setShowPopup] = React.useState(false);
   const [errors, setErrors] = React.useState([]);
 
   const nameRef = React.useRef(null);
   const projects = useSelector((state) => state.projects.projectsList);
   const dispatch = useDispatch();
+
+  const [showPopup, setShowPopup] = React.useState(false);
 
   const openCreatePopup = React.useCallback(() => {
     setShowPopup(() => true);
@@ -43,7 +44,6 @@ export const ProjectsList = () => {
         .set({
           id: newProjectKey,
           name: projectName,
-          messages: [],
         })
         .then(() => {
           setShowPopup(() => false);
@@ -66,9 +66,11 @@ export const ProjectsList = () => {
 
   return (
     <div>
-      <Button wide onClick={openCreatePopup}>
-        Create Project
-      </Button>
+      <div className={styles.createButton}>
+        <Button wide onClick={openCreatePopup} color="primary">
+          Create Project
+        </Button>
+      </div>
       {projects.map((projectId: string) => (
         <ProjectItem key={projectId} id={projectId} />
       ))}

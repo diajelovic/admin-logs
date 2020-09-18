@@ -17,8 +17,11 @@ export const routes: RouteConfig[] = [
         component: ProjectsPage,
       },
       {
+        path: '/projects/:projectId?/:logsId?',
+        component: ProjectsPage,
+      },
+      {
         path: '/profile',
-        exact: true,
         component: ProfilePage,
       },
       {

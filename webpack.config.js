@@ -8,6 +8,7 @@ module.exports = {
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'build'),
+    publicPath: '/',
   },
   devtool: 'eval-cheap-module-source-map',
   module: {
@@ -45,13 +46,6 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.ts', '.tsx', '.css'],
     modules: [path.resolve(__dirname, 'src/app'), 'node_modules'],
-    // alias: {
-    //   pages: path.resolve(__dirname, 'src/app/pages'),
-    //   routes: path.resolve(__dirname, 'src/app/routes'),
-    //   containers: path.resolve(__dirname, 'src/app/containers'),
-    //   components: path.resolve(__dirname, 'src/app/components'),
-    //   store: path.resolve(__dirname, 'src/app/store'),
-    // },
   },
 
   plugins: [
@@ -64,7 +58,7 @@ module.exports = {
   ],
 
   devServer: {
-    historyApiFallback: { disableDotRule: true },
+    historyApiFallback: true,
     contentBase: path.resolve(__dirname, 'build'),
     compress: true,
     open: false,

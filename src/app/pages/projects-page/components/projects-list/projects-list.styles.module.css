@@ -2,6 +2,37 @@
     width: 300px;
 }
 
+.project {
+    padding: 10px 20px;
+    position: relative;
+    border-bottom: 1px solid #000;
+    display: block;
+    color: #000000;
+    text-decoration: none;
+}
+
+.active {
+    cursor: default;
+}
+
+.project:hover:before,
+.active:before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 10px;
+    background: #000;
+    position: absolute;
+    top: 0;
+    left: 6px;
+    bottom: 0;
+    margin: auto 0;
+}
+
+.createButton {
+    margin: 20px;
+}
+
 .buttons {
     display: flex;
     justify-content: flex-end;
