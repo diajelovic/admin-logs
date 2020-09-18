@@ -9,10 +9,9 @@ export interface Project {
 export interface ProjectsState {
   projectsById: Record<string, Project>;
   projectsList: string[];
-  currentProject: string | null;
 }
 
-const defaultState: ProjectsState = { projectsById: {}, projectsList: [], currentProject: null };
+const defaultState: ProjectsState = { projectsById: {}, projectsList: [] };
 
 export const projectsReducer = (
   state: ProjectsState = defaultState,
