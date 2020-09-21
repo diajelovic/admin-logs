@@ -36,16 +36,22 @@ export const ProjectsList = () => {
     if (!projectName) {
       setErrors(['project name is empty']);
     } else {
-      var newProjectKey = firebase.database().ref().child('projects').push().key;
+      setErrors([]);
+      const newProjectKey = firebase.database().ref().child('projects').push().key;
+      const newProject = {
+        id: newProjectKey,
+        name: projectName,
+      };
 
       firebase
         .database()
         .ref('projects/' + newProjectKey)
-        .set({
-          id: newProjectKey,
-          name: projectName,
-        })
+        .set(newProject)
         .then(() => {
+          dispatch({
+            type: 'ADD_PROJECT',
+            payload: newProject,
+          });
           setShowPopup(() => false);
         })
         .catch(console.log);

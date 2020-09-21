@@ -2,11 +2,13 @@ import React from 'react';
 import * as firebase from 'firebase';
 import 'firebase/database';
 
-import { Project, useSelector } from 'store';
+import { Project, useDispatch, useSelector } from 'store';
 import { Button } from 'components/button';
 import { Modal } from 'components/modal/modal';
 import { Messages } from 'components/messages';
 import { Input } from 'components/input';
+
+import { LogItem } from './project-logs-item';
 
 import * as styles from './project-logs-list.styles.module.css';
 
@@ -15,6 +17,7 @@ interface Props {
 }
 
 export const ProjectLogsList = (props: Props) => {
+  const dispatch = useDispatch();
   const project: Project | undefined = useSelector(
     (state) => state.projects.projectsById[props.projectId]
   );
@@ -37,18 +40,29 @@ export const ProjectLogsList = (props: Props) => {
     if (!logsName) {
       setErrors(['logs name is empty']);
     } else {
-      var newLogsKey = firebase.database().ref().child(`projects/${props.projectId}/logs`).push()
-        .key;
+      setErrors([]);
+      const newLogsKey = firebase.database().ref(`projects/${props.projectId}/logs`).push().key;
+      const newLog = {
+        id: newLogsKey,
+        name: logsName,
+        createdAt: Date.now(),
+      };
+
+      const updates: Record<string, any> = {};
+      updates[`projects/${props.projectId}/logs/${newLogsKey}`] = newLog;
 
       firebase
         .database()
-        .ref('logs/' + newLogsKey)
-        .set({
-          id: newLogsKey,
-          name: logsName,
-          messages: [],
-        })
+        .ref()
+        .update(updates)
         .then(() => {
+          dispatch({
+            type: 'ADD_LOG',
+            payload: {
+              projectId: props.projectId,
+              log: newLog,
+            },
+          });
           setShowPopup(() => false);
         })
         .catch(console.log);
@@ -64,7 +78,11 @@ export const ProjectLogsList = (props: Props) => {
         </Button>
         <Button onClick={() => null}>delete project</Button>
       </div>
-      {}
+      <div className={styles.logs}>
+        {project?.logs?.map((log) => {
+          return <LogItem key={log.id} log={log} />;
+        })}
+      </div>
       {showPopup && (
         <Modal onClose={closePopup}>
           <Messages errors={errors} />
