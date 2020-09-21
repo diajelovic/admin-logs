@@ -14,8 +14,6 @@ export const combineReducers = (reducers: Record<string, Reducer<any, any>>): Re
       }
     }
 
-    console.debug('---newState', hasChange, newState);
-
     return hasChange ? newState : state;
   };
 };

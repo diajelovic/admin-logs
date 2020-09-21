@@ -4,6 +4,6 @@ interface Props {
   logsId: string;
 }
 
-export const LogsList = (props: Props) => {
+export const LogMessages = (props: Props) => {
   return <div>losgs</div>;
 };
