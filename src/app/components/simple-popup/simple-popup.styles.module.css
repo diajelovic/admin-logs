@@ -1,0 +1,7 @@
+.buttons {
+    display: flex;
+}
+
+.buttons > * {
+    margin-right: 10px;
+}

@@ -14,4 +14,4 @@ function AuthorizedFn<P>(Component: React.ComponentType<P>) {
   };
 }
 
-export const Authorized = R.compose(AuthorizedFn, LoadingProfile) as HOC;
+export const Authorized = R.compose(LoadingProfile, AuthorizedFn) as HOC;

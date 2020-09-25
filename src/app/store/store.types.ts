@@ -3,6 +3,7 @@ import { ProjectsState } from './projects-reducer';
 import { LogsState } from './logs-reducer';
 
 export * from './projects-reducer';
+export * from './logs-reducer';
 
 export interface Action {
   type: string;

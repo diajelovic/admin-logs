@@ -13,4 +13,4 @@ function NotAuthorizedFn<P>(Component: React.ComponentType<P>): React.ComponentT
   };
 }
 
-export const NotAuthorized = R.compose(NotAuthorizedFn, LoadingProfile) as HOC;
+export const NotAuthorized = R.compose(LoadingProfile, NotAuthorizedFn) as HOC;
