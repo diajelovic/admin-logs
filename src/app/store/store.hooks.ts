@@ -2,9 +2,9 @@ import React from 'react';
 import { storeContext } from './store.context';
 import { Store } from './store.types';
 
-type Selector = (store: Store) => any;
+type Selector<T> = (store: Store) => T;
 
-export const useSelector = (selector: Selector) => {
+export const useSelector = <T>(selector: Selector<T>): T => {
   const [store] = React.useContext(storeContext);
 
   return selector(store);

@@ -7,6 +7,8 @@ import { RegisterPage } from 'pages/register-page';
 import { RecoveryPage } from 'pages/recovery-page';
 import { ProjectsPage } from 'pages/projects-page';
 
+export const LOG_PATTERN = '/projects/:projectId?/:logId?';
+
 export const routes: RouteConfig[] = [
   {
     component: Layout,
@@ -17,7 +19,7 @@ export const routes: RouteConfig[] = [
         component: ProjectsPage,
       },
       {
-        path: '/projects/:projectId?/:logsId?',
+        path: LOG_PATTERN,
         component: ProjectsPage,
       },
       {

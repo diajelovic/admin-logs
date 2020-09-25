@@ -1,96 +1,61 @@
 import React from 'react';
-import * as firebase from 'firebase/app';
-import 'firebase/database';
 
 import { useDispatch, useSelector } from 'store';
 
 import { Button } from 'components/button';
 import { Input } from 'components/input';
-import { Modal } from 'components/modal/modal';
-import { Messages } from 'components/messages';
+import { createProject, getProjects, isError } from 'api';
 
 import { ProjectItem } from './project-item';
 
 import * as styles from './projects-list.styles.module.css';
+import { SimplePopup, useShowModal } from 'components/simple-popup';
 
 export const ProjectsList = () => {
-  const [errors, setErrors] = React.useState([]);
-
   const nameRef = React.useRef(null);
   const projects = useSelector((state) => state.projects.projectsList);
   const dispatch = useDispatch();
 
-  const [showPopup, setShowPopup] = React.useState(false);
+  const { isPopupShowed, openPopup, closePopup } = useShowModal();
 
-  const openCreatePopup = React.useCallback(() => {
-    setShowPopup(() => true);
-  }, []);
+  const createProjectHandler = React.useCallback(async () => {
+    const name = nameRef.current.value;
 
-  const closePopup = React.useCallback(() => {
-    setShowPopup(() => false);
-  }, []);
+    const result = await createProject({ name });
 
-  const createProject = React.useCallback(() => {
-    const projectName = nameRef.current.value;
-
-    if (!projectName) {
-      setErrors(['project name is empty']);
+    if (isError(result)) {
+      return result.errors;
     } else {
-      setErrors([]);
-      const newProjectKey = firebase.database().ref().child('projects').push().key;
-      const newProject = {
-        id: newProjectKey,
-        name: projectName,
-      };
+      dispatch({
+        type: 'ADD_PROJECT',
+        payload: result,
+      });
 
-      firebase
-        .database()
-        .ref('projects/' + newProjectKey)
-        .set(newProject)
-        .then(() => {
-          dispatch({
-            type: 'ADD_PROJECT',
-            payload: newProject,
-          });
-          setShowPopup(() => false);
-        })
-        .catch(console.log);
+      closePopup();
+
+      return [];
     }
   }, []);
 
   React.useEffect(() => {
-    firebase
-      .database()
-      .ref('/projects')
-      .once('value')
-      .then((snap) => {
-        const projectsData = snap.val();
-
-        dispatch({ type: 'FETCH_PROJECTS', payload: projectsData });
-      });
+    getProjects().then((projects) => {
+      dispatch({ type: 'FETCH_PROJECTS', payload: projects });
+    });
   }, []);
 
   return (
     <div>
       <div className={styles.createButton}>
-        <Button wide onClick={openCreatePopup} color="primary">
+        <Button wide onClick={openPopup} color="primary">
           Create Project
         </Button>
       </div>
       {projects.map((projectId: string) => (
         <ProjectItem key={projectId} id={projectId} />
       ))}
-      {showPopup && (
-        <Modal onClose={closePopup}>
-          <Messages errors={errors} />
-          <Input ref={nameRef} type="text" placeholder="Project Name" />
-          <div className={styles.buttons}>
-            <Button onClick={createProject} color="primary">
-              Create
-            </Button>
-          </div>
-        </Modal>
-      )}
+      <SimplePopup onSubmit={createProjectHandler} onClose={closePopup} show={isPopupShowed}>
+        <Input ref={nameRef} type="text" placeholder="Project Name" />
+      </SimplePopup>
     </div>
   );
 };

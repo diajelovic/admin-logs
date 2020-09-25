@@ -3,15 +3,15 @@ import { useParams } from 'react-router';
 import { ProjectRouteParams } from 'pages/projects-page/projects.types';
 
 import { LogMessages } from '../log-messages';
-import { ProjectLogsList } from '../project-logs-list';
+import { LogsList } from '../logs-list';
 
 export const ProjectLogs = () => {
-  const { logsId, projectId } = useParams<ProjectRouteParams>();
+  const { logId, projectId } = useParams<ProjectRouteParams>();
 
-  return logsId ? (
-    <LogMessages logsId={logsId} />
+  return logId ? (
+    <LogMessages projectId={projectId} logId={logId} />
   ) : projectId ? (
-    <ProjectLogsList projectId={projectId} />
+    <LogsList projectId={projectId} />
   ) : (
     <div> Project is Not selected</div>
   );

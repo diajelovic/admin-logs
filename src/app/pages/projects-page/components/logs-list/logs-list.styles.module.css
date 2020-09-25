@@ -1,11 +1,3 @@
-.buttons {
-    display: flex;
-}
-
-.buttons > * {
-    margin-right: 10px;
-}
-
 .logs {
     display: grid;
     justify-items: stretch;
@@ -21,6 +13,12 @@
     padding: 10px;
     border: 1px solid #000;
     cursor: pointer;
+    text-decoration: none;
+    color: #000;
+}
+
+.item:hover {
+    background: #e0e0e0;
 }
 
 
