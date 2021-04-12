@@ -1,9 +1,11 @@
+// global
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
-import * as firebase from 'firebase/app';
+import firebase from 'firebase/app';
 
+// common
 import { routes } from 'routes/routes';
 import { storeContext, rootReducer } from 'store';
 

@@ -1,0 +1,260 @@
+._wzV6 {
+    height: 36px;
+    line-height: 36px;
+    padding: 20px;
+    box-shadow: 0 1px 2px #000;
+    display: flex;
+    position: relative;
+    background: #fff;
+    justify-content: space-between;
+}
+
+._747r0 {
+    text-decoration: none;
+    color: #f00;
+    font-weight: bold;
+    font-size: 30px;
+    font-family: Tahoma, sans-serif;
+}
+
+._1nB8j {
+    display: flex;
+}
+
+._1nB8j > * {
+    margin-right: 10px;
+}
+
+._3_ziw {
+    height: 36px;
+    padding: 8px 16px;
+    box-sizing: border-box;
+    font-size: 14px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: 1px solid #000;
+    border-radius: 5px;
+    background: #e0e0e0;
+    color: #000;
+    text-decoration: none;
+}
+
+._3_ziw._2mxxE {
+    width: 100%;
+}
+
+._3_ziw:hover {
+    background: #d5d5d5;
+}
+
+._3_ziw._16fWz {
+    background: #90caf9;
+}
+
+._3_ziw._16fWz:hover {
+    background: rgb(100, 141, 174);
+}
+
+
+html, body {
+    margin: 0;
+    font-family: Tahoma, sans-serif;
+    height: 100%;
+}
+
+._32uNi {
+    height: 100%;
+    display: grid;
+    grid-template-rows: auto 1fr;
+}
+
+._1MHNz {
+    display: flex;
+    align-items: stretch;
+}
+
+._2FfKz {
+    text-align: center;
+    margin: 50px;
+    font-size: 50px;
+}
+
+._31uja {
+    border: 1px solid #000;
+    background: #fff;
+    border-radius: 20px;
+    margin: 20px auto;
+    width: 400px;
+    padding: 0 20px 20px;
+}
+
+._3xN0M {
+    margin: 10px 0 0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+._3xN0M > * {
+    margin-left: 10px;
+}
+
+._3nXiV {
+    font-size: 14px;
+    background: none;
+    border: 1px solid #000;
+    display: block;
+    padding: 14px 18px;
+    line-height: 28px;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+._3Bv6Y {
+    position: relative;
+    margin: 10px 0;
+}
+
+._2UMwU {
+    margin: 20px 0;
+    padding: 6px 16px 6px 30px;
+    border-radius: 5px;
+    color: rgb(183, 223, 185);
+    background: rgb(7, 17, 7);
+}
+
+._2UMwU._21-jP {
+    color: rgb(250, 179, 174);
+    background: rgb(24, 6, 5);
+}
+
+._2UMwU li {
+    margin: 10px 0;
+}
+
+._1gA9o {
+    background: rgba(0,0,0,0.3);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+}
+
+._1jaCQ {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 101;
+    border: 1px solid #000;
+    background: #fff;
+    border-radius: 20px;
+    width: 400px;
+    padding: 20px;
+}
+
+._3HFec {
+    cursor: pointer;
+    position: absolute;
+    top: -30px;
+    right: 0;
+    border-radius: 100%;
+    border: 1px solid #000;
+    background: #fff;
+    width: 24px;
+    height: 24px;
+    font-size: 16px;
+    text-align: center;
+    line-height: 24px;
+    text-transform: uppercase;
+}
+
+._3HFec:hover {
+    transform: scale(1.1);
+}
+
+.HVpn0 {
+    display: flex;
+}
+
+.HVpn0 > * {
+    margin-right: 10px;
+}
+
+._2zLh0 {
+    display: grid;
+    justify-items: stretch;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 90px;
+    grid-auto-rows: 90px;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+._1yK3Z {
+    border-radius: 10px;
+    padding: 10px;
+    border: 1px solid #000;
+    cursor: pointer;
+    text-decoration: none;
+    color: #000;
+}
+
+._1yK3Z:hover {
+    background: #e0e0e0;
+}
+
+
+
+._2np73 {
+    width: 300px;
+}
+
+.PFV-O {
+    padding: 10px 20px;
+    position: relative;
+    border-bottom: 1px solid #000;
+    display: block;
+    color: #000000;
+    text-decoration: none;
+}
+
+._2M1p9 {
+    cursor: default;
+}
+
+.PFV-O:hover:before,
+._2M1p9:before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 10px;
+    background: #000;
+    position: absolute;
+    top: 0;
+    left: 6px;
+    bottom: 0;
+    margin: auto 0;
+}
+
+._1JhWE {
+    margin: 20px;
+}
+
+._1ax2k {
+    display: flex;
+    justify-content: flex-end;
+}
+
+._1ZJss {
+    flex: 0 1 250px;
+    box-shadow: 1px 0 2px #000;
+}
+
+._3jS1q {
+    padding: 20px;
+    flex: 1 1 auto;
+}
+

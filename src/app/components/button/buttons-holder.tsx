@@ -1,6 +1,7 @@
 import React from 'react';
 
-import * as styles from './button.styles.module.css';
+// local
+import styles from './button.styles.module.css';
 
 type Props = React.PropsWithChildren<{}>;
 

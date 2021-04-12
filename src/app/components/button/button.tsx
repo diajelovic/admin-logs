@@ -1,7 +1,9 @@
+// global
 import React from 'react';
 import cn from 'classnames';
 
-import * as styles from './button.styles.module.css';
+// local
+import styles from './button.styles.module.css';
 
 type Props = React.PropsWithChildren<{
   onClick?: (e?: React.MouseEvent) => void;

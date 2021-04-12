@@ -1,5 +1,5 @@
 import { Action } from './store.types';
-import * as firebase from 'firebase/app';
+import firebase from 'firebase/app';
 
 export interface AuthState {
   profile?: firebase.User;

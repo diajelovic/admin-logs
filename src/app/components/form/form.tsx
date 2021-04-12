@@ -1,7 +1,7 @@
 import React from 'react';
 import cn from 'classnames';
 
-import * as styles from './form.styles.module.css';
+import styles from './form.styles.module.css';
 
 type Props = React.PropsWithChildren<{
   title?: string;

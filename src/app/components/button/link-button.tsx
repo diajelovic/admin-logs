@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import cn from 'classnames';
 
-import * as styles from './button.styles.module.css';
+import styles from './button.styles.module.css';
 
 type Props = React.PropsWithChildren<{
   to: string;

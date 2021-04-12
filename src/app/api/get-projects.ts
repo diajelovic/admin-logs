@@ -1,4 +1,4 @@
-import * as firebase from 'firebase/app';
+import firebase from 'firebase/app';
 import { ErrorResult } from './api.types';
 import { Project } from '../store';
 

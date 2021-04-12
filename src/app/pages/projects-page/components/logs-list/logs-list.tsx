@@ -8,7 +8,7 @@ import { SimplePopup, useShowModal } from 'components/simple-popup';
 
 import { LogItem } from './logs-item';
 
-import * as styles from './logs-list.styles.module.css';
+import styles from './logs-list.styles.module.css';
 
 interface Props {
   projectId: string;

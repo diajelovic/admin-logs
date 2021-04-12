@@ -5,7 +5,7 @@ import { useSelector, Project } from 'store';
 
 import { ProjectRouteParams } from 'pages/projects-page/projects.types';
 
-import * as styles from './projects-list.styles.module.css';
+import styles from './projects-list.styles.module.css';
 
 interface Props {
   id: string;

@@ -1,7 +1,7 @@
 import React from 'react';
 import cn from 'classnames';
 
-import * as styles from './messages.styles.module.css';
+import styles from './messages.styles.module.css';
 
 type Props = {
   errors?: string[];

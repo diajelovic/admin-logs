@@ -4,7 +4,7 @@ import { generatePath, Link } from 'react-router-dom';
 import { Log } from 'store/logs-reducer';
 import { LOG_PATTERN } from 'routes/routes';
 
-import * as styles from './logs-list.styles.module.css';
+import styles from './logs-list.styles.module.css';
 
 interface Props {
   projectId: string;

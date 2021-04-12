@@ -10,6 +10,7 @@ module.exports = {
     path: path.resolve(__dirname, 'build'),
     publicPath: '/',
   },
+  mode: 'development',
   devtool: 'eval-cheap-module-source-map',
   module: {
     rules: [

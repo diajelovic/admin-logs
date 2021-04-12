@@ -1,8 +1,11 @@
-import * as firebase from 'firebase/app';
+// global
+import firebase from 'firebase/app';
 import 'firebase/database';
 
+// common
 import { LogMessage } from 'store/logs-reducer';
 
+// local
 import { ErrorResult } from './api.types';
 
 interface Params {

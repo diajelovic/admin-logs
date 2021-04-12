@@ -4,7 +4,7 @@ import { Messages } from 'components/messages';
 import { Button } from 'components/button';
 import { Modal } from 'components/modal/modal';
 
-import * as styles from './simple-popup.styles.module.css';
+import styles from './simple-popup.styles.module.css';
 
 interface Props {
   onSubmit: () => Promise<string[]>;

@@ -1,12 +1,12 @@
 import React from 'react';
 import { renderRoutes, RouteConfig } from 'react-router-config';
-import * as firebase from 'firebase/app';
+import firebase from 'firebase/app';
 import 'firebase/auth';
 
 import { useDispatch } from 'store';
 import { Header } from 'components/header';
 
-import * as styles from './layout.styles.module.css';
+import styles from './layout.styles.module.css';
 
 interface Props {
   route?: RouteConfig;

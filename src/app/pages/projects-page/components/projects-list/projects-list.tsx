@@ -8,7 +8,7 @@ import { createProject, getProjects, isError } from 'api';
 
 import { ProjectItem } from './project-item';
 
-import * as styles from './projects-list.styles.module.css';
+import styles from './projects-list.styles.module.css';
 import { SimplePopup, useShowModal } from 'components/simple-popup';
 
 export const ProjectsList = () => {
