@@ -1,11 +1,13 @@
 import React from 'react';
-import { useSelector } from 'store';
+
+// common
 import { Loading } from 'components/loading';
+import { useOvermind } from 'store';
 
 export function LoadingProfile<P>(Component: React.ComponentType<P>): React.ComponentType<P> {
   return (props: P) => {
-    const pending = useSelector((store) => store.auth.profile === undefined);
+    const { state } = useOvermind();
 
-    return pending ? <Loading /> : <Component {...props} />;
+    return state.auth.pending ? <Loading /> : <Component {...props} />;
   };
 }

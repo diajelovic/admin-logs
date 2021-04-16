@@ -1,13 +1,26 @@
 // global
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
-import { renderRoutes } from 'react-router-config';
+// import { BrowserRouter } from 'react-router-dom';
+// import { renderRoutes } from 'react-router-config';
+import { createOvermind } from 'overmind';
+import { Provider } from 'overmind-react';
 import firebase from 'firebase/app';
 
 // common
-import { routes } from 'routes/routes';
-import { storeContext, rootReducer } from 'store';
+// import { routes } from 'routes/routes';
+// import { config } from 'store';
+
+const overmind = createOvermind(
+  {
+    state: {
+      title: 'My App',
+    },
+  },
+  {
+    devtools: false,
+  }
+);
 
 const firebaseConfig = {
   apiKey: 'AIzaSyA-oeA43qIcUPISPXfrB7fklzV17pMJ8e0',
@@ -22,12 +35,10 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 const App = () => {
-  const store = React.useReducer(rootReducer, { auth: {} });
-
   return (
-    <storeContext.Provider value={store}>
-      <BrowserRouter>{renderRoutes(routes)}</BrowserRouter>
-    </storeContext.Provider>
+    <Provider value={overmind}>
+      {/*<BrowserRouter>{renderRoutes(routes)}</BrowserRouter>*/}
+    </Provider>
   );
 };
 

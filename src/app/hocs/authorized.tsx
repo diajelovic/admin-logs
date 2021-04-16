@@ -1,16 +1,20 @@
+// global
 import React from 'react';
-import { useSelector } from 'store';
 import { Redirect } from 'react-router';
 import * as R from 'ramda';
 
+// common
+import { useOvermind } from 'store';
+
+// local
 import { LoadingProfile } from './loading-profile';
 import { HOC } from './hoc.types';
 
 function AuthorizedFn<P>(Component: React.ComponentType<P>) {
   return (props: P) => {
-    const isLoggedIn = useSelector((store) => !!store.auth.profile);
+    const { state } = useOvermind();
 
-    return isLoggedIn ? <Component {...props} /> : <Redirect to="/sign-in" />;
+    return state.auth.isLoggedIn ? <Component {...props} /> : <Redirect to="/sign-in" />;
   };
 }
 

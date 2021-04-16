@@ -1,15 +1,19 @@
 import React from 'react';
 import * as R from 'ramda';
-import { useSelector } from 'store';
 import { Redirect } from 'react-router';
+
+//common
+import { useOvermind } from 'store';
+
+// local
 import { LoadingProfile } from './loading-profile';
 import { HOC } from './hoc.types';
 
 function NotAuthorizedFn<P>(Component: React.ComponentType<P>): React.ComponentType<P> {
   return (props: P) => {
-    const isLoggedIn = useSelector((store) => !!store.auth.profile);
+    const { state } = useOvermind();
 
-    return !isLoggedIn ? <Component {...props} /> : <Redirect to="/" />;
+    return !state.auth.isLoggedIn ? <Component {...props} /> : <Redirect to="/" />;
   };
 }
 

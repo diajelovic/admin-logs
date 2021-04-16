@@ -4,7 +4,7 @@ import 'firebase/auth';
 import { Authorized } from 'hocs/authorized';
 
 // common
-import { ProjectLogs } from './components/project-logs';
+// import { ProjectLogs } from './components/project-logs';
 import { ProjectsList } from './components/projects-list/projects-list';
 
 // local
@@ -16,9 +16,7 @@ export const ProjectsPage = Authorized(() => {
       <div className={styles.projects}>
         <ProjectsList />
       </div>
-      <div className={styles.logs}>
-        <ProjectLogs />
-      </div>
+      <div className={styles.logs}>{/*<ProjectLogs />*/}</div>
     </>
   );
 });
